@@ -1,0 +1,22 @@
+import sys
+
+n = int(input())
+point = []
+times = []
+res = []
+
+for i in range(n):
+    data = list(map(int, sys.stdin.readline().strip().split()))
+
+    if data[0] == 1:
+        point.append(data[1])
+        times.append(data[2]-1)
+
+    elif times:
+        times[-1] -= 1
+
+    if times and times[-1] == 0:
+        res.append(point.pop())
+        times.pop()
+
+print(sum(res))
