@@ -1,0 +1,27 @@
+5052 전화번호 목록
+
+import sys
+
+input = sys.stdin.readline
+
+
+def phone(num):
+    for i in range(len(num) - 1):
+        if num[i] == num[i + 1][0:len(num[i])]:
+            return False
+    return True
+
+
+res = ''
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    num = []
+    for _ in range(n):
+        num.append(str(input().strip()))
+    num = sorted(num)
+    if phone(num):
+        res += "YES\n"
+    else:
+        res += "NO\n"
+print(res)
