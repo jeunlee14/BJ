@@ -1,0 +1,19 @@
+7795 먹을 것인가 먹힐 것인가
+// bisect 라이브러리를 사용하여 구현
+
+import sys
+import bisect
+
+input = sys.stdin.readline
+
+t = int(input())
+res = ''
+for _ in range(t):
+    n, l = map(int, input().split())
+    dataA = sorted(list(map(int, input().split())))
+    dataB = sorted(list(map(int, input().split())))
+    cnt = 0
+
+    for i in dataA:
+        cnt += (bisect.bisect(dataB, i - 1))
+    print(cnt)
