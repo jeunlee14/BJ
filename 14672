@@ -1,0 +1,40 @@
+//14672 파닭파닭
+
+import sys
+input = sys.stdin.readline
+
+// 파이썬에서 함수를 만들었을 때 더 속도가 단축되는 이유가 뭘까...
+def padac():
+    start, result, end = 0, 0, max(data)
+
+    while end >= start:
+        res, eat = 0, 0
+        mid = (start + end) // 2
+
+        if mid == 0:
+            break
+
+        for i in data:
+            res += i // mid
+
+            if res > ramen:
+                eat += mid * (res - ramen)
+
+            eat += i % mid
+
+        if res < ramen:
+            end = mid - 1
+
+        else:
+            result = eat
+            start = mid + 1
+
+    print(result)
+
+
+pa, ramen = map(int, input().split())
+data = []
+for _ in range(pa):
+    data.append(int(input()))
+
+padac()
