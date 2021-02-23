@@ -1,0 +1,46 @@
+#2468 안전 영역
+
+import sys
+sys.setrecursionlimit(100000)
+input = sys.stdin.readline
+
+n = int(input())
+graph = []
+max_num = 0
+
+for i in range(n):
+    data = list(map(int, input().strip().split()))
+    if max(data) > max_num:
+        max_num = max(data)
+    graph.append(data)
+
+
+def dfs(x, y, k):
+    if x <= -1 or x >= n or y <= -1 or y >= n:
+        return False
+
+    if graph[x][y] > k:
+        if visit[x][y] == 0:
+            visit[x][y] = 1
+
+            dfs(x - 1, y, k)
+            dfs(x, y - 1, k)
+            dfs(x + 1, y, k)
+            dfs(x, y + 1, k)
+            return True
+
+    return False
+
+
+result = []
+for k in range(max_num):
+    res = 0
+    visit = [[0] * n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if dfs(i, j, k):
+                res += 1
+
+    result.append(res)
+
+print(max(result))
