@@ -1,0 +1,17 @@
+# 12865 평범한 배낭
+
+import sys
+input = sys.stdin.readline
+
+n, k = map(int, input().strip().split())
+bag = [list(map(int, input().strip().split())) for _ in range(n)]
+
+print(bag)
+dp = [0] * (k+1)
+
+for i in range(n):
+    for j in range(k, 1, -1):
+        if bag[i][0] <= j:
+            dp[j] = max(dp[j], dp[j - bag[i][0]] + bag[i][1])
+
+print(dp[-1])
