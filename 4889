@@ -1,0 +1,31 @@
+# 4889 안정적인 문자열
+
+import sys
+input = sys.stdin.readline
+
+string =[]
+while True:
+    data = list(str(input().strip()))
+    if '-' in data:
+        break
+    string.append(data)
+
+for i in range(len(string)):
+    res = []
+    cnt = 0
+    for j in string[i]:
+        if j == '{':
+            res.append(j)
+
+        elif j == '}' and len(res) != 0:
+            res.pop()
+
+        elif j == '}' and len(res) == 0:
+            cnt += 1
+            res.append('{')
+
+    if res:
+        cnt += len(res)//2
+
+    print(str(i+1)+'. '+str(cnt))
+
