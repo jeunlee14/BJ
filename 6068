@@ -1,0 +1,25 @@
+#6068 시간 관리하기
+import sys
+input = sys.stdin.readline
+
+n= int(input())
+data = sorted([list(map(int, input().split())) for x in range(n)], key=lambda x: x[1], reverse=True)
+end = data[0][1]
+
+for i in range(n-1):
+    if end - data[i][0] > data[i+1][1]:
+        end = data[i+1][1]
+    else:
+        end -= data[i][0]
+
+res = end - data[-1][0]
+if res >= 0:
+    print(res)
+else:
+    print(-1)
+
+
+
+
+
+
