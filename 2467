@@ -1,0 +1,24 @@
+#2467 용액 
+
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+data = sorted(list(map(int, input().split())))
+sum = 2000000002
+left, right = 0, n-1
+
+while left < right:
+    res = data[left] + data[right]
+
+    if abs(res) < sum:
+        sum = abs(res)
+        sumnum = data[left], data[right]
+
+    if res < 0:
+        left += 1
+
+    else:
+        right -= 1
+
+print(sumnum[0], sumnum[1])
