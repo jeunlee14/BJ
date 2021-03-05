@@ -1,0 +1,110 @@
+# 1038 감소하는 수
+''' 풀다보니 코드의 길이가 어마어마하다.
+더 간단한 방법을 도전해 봐야겠다. '''
+
+n = int(input())
+list = []
+
+# 9번까지
+if n < 10:
+    print(n)
+
+# 10~54번 (45개)
+elif n < 55:
+    for i in range(1, 10):
+        for j in range(i):
+            list.append(i * 10 + j)
+
+    print(list[n - 10])
+
+# 55~174번 (120개)
+elif n < 175:
+    for i in range(1, 10):
+        for j in range(i):
+            for k in range(j):
+                list.append(i * 100 + j * 10 + k)
+                
+    print(list[n - 55])
+
+# 175~384번 (210개)
+elif n < 385:
+    for i in range(1, 10):
+        for j in range(i):
+            for k in range(j):
+                for l in range(k):
+                    list.append(i * 1000 + j * 100 + k * 10 + l)
+
+    print(list[n - 175])
+
+# 385~636 (252개)
+elif n < 637:
+    for i in range(1, 10):
+        for j in range(i):
+            for k in range(j):
+                for l in range(k):
+                    for m in range(l):
+                        list.append(i * 10000 + j * 1000 + k * 100 + l * 10 + m)
+
+    print(list[n - 385])
+
+# 637~846 (210개)
+elif n < 847:
+    for i in range(1, 10):
+        for j in range(i):
+            for k in range(j):
+                for l in range(k):
+                    for m in range(l):
+                        for x in range(m):
+                            list.append(i * 100000 + j * 10000 + k * 1000 + l * 100 + m * 10 + x)
+
+    print(list[n - 637])
+
+# 847 ~ 966(120개)
+elif n < 967:
+    for i in range(1, 10):
+        for j in range(i):
+            for k in range(j):
+                for l in range(k):
+                    for m in range(l):
+                        for x in range(m):
+                            for y in range(x):
+                                list.append(i * 1000000 + j * 100000 + k * 10000 + l * 1000 + m * 100 + x * 10 + y)
+
+    print(list[n - 847])
+
+# 967~1011 (45개)
+elif n < 1012:
+    for i in range(1, 10):
+        for j in range(i):
+            for k in range(j):
+                for l in range(k):
+                    for m in range(l):
+                        for x in range(m):
+                            for y in range(x):
+                                for z in range(y):
+                                    list.append(
+                                        i * 10000000 + j * 1000000 + k * 100000 + l * 10000 + m * 1000 + x * 100 + y * 10 + z)
+                                    
+    print(list[n - 967])
+
+# 1012 ~ 1021 (10개)
+elif n < 1022:
+    for i in range(1, 10):
+        for j in range(i):
+            for k in range(j):
+                for l in range(k):
+                    for m in range(l):
+                        for x in range(m):
+                            for y in range(x):
+                                for z in range(y):
+                                    for v in range(z):
+                                        list.append(
+                                            i * 100000000 + j * 10000000 + k * 1000000 + l * 100000 + m * 10000 + x * 1000 + y * 100 + z * 10 + v)
+
+    print(list[n - 1012])
+
+elif n == 1022:
+    print(9876543210)
+
+else:
+    print(-1)
