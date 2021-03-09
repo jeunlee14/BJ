@@ -1,0 +1,46 @@
+# 2529 부등호
+
+n = int(input())
+data = input().split()
+data.append('')
+max, min, cnt = 9, 0, 0
+max_num, min_num = [], []
+
+
+for i in range(n + 1):
+    if len(max_num) == (n + 1):
+        break
+    if data[i] == '<':
+        cnt += 1
+    else:
+        x_num = max - cnt - 1
+        for j in range(100):
+            max_num.append(max - cnt)
+            if cnt == 0:
+                max = x_num
+                break
+            cnt -= 1
+
+# 최소
+cnt = 0
+for i in range(n + 1):
+    if len(min_num) == (n + 1):
+        break
+    if data[i] == '>':
+        cnt += 1
+    else:
+        n_num = min + cnt + 1
+        for j in range(100):
+            min_num.append(min + cnt)
+            if cnt == 0:
+                min = n_num
+                break
+            cnt -= 1
+
+for i in max_num:
+    print(i, end='')
+
+print()
+
+for i in min_num:
+    print(i, end='')
