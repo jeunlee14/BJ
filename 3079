@@ -1,0 +1,23 @@
+# 3079 입국심사import sys
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+simsa = [int(input()) for _ in range(n)]
+simsa = sorted(simsa)
+
+start = 0
+end = 1000000000000000000
+
+while end >= start:
+    cnt = 0
+    mid = (start+end)//2
+
+    for i in range(n):
+        cnt += mid // simsa[i]
+
+    if cnt < m:
+        start = mid + 1
+    else:
+        end = mid - 1
+
+print(start)
