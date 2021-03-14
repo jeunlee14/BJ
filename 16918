@@ -1,0 +1,57 @@
+# 16918 봄버맨
+
+r, c, n = map(int, input().split())
+data = [list(input()) for _ in range(r)]
+
+if n % 2 == 0:
+    for _ in range(r):
+        print('O' * c)
+
+elif n == 1:
+    for row in data:
+        print(''.join(row))
+
+else:
+    bomb = []
+    for x in range(r):
+        for y in range(c):
+            if data[x][y] == 'O':
+                data[x][y] = '.'
+                bomb.append((x, y))
+            else:
+                data[x][y] = 'O'
+                
+    dx = [1, -1, 0, 0]
+    dy = [0, 0, 1, -1]
+    
+    for bx, by in bomb:
+        for i in range(4):
+            nx = bx + dx[i]
+            ny = by + dy[i]
+            if 0 <= nx < r and 0 <= ny < c:
+                data[nx][ny] = '.'
+
+    times = (n - 3) % 4
+    if not times:
+        for row in data:
+            print(''.join(row))
+            
+    else:
+        bomb = []
+        for x in range(r):
+            for y in range(c):
+                if data[x][y] == 'O':
+                    bomb.append((x, y))
+                    data[x][y] = '.'
+                else:
+                    data[x][y] = 'O'
+                    
+        for bx, by in bomb:
+            for i in range(4):
+                nx = bx + dx[i]
+                ny = by + dy[i]
+                if 0 <= nx < r and 0 <= ny < c:
+                    data[nx][ny] = '.'
+                    
+        for row in data:
+            print(''.join(row))
