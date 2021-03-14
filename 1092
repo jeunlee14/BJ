@@ -1,0 +1,29 @@
+# 1092 배
+# python은 timeover발생 -> pypy3 사용
+
+import sys
+input = sys.stdin.readline
+
+c = int(input())
+crane = sorted(list(map(int, input().split())), reverse=True)
+
+b = int(input())
+box = sorted(list(map(int, input().split())), reverse=True)
+
+def move():
+    if max(crane) < max(box):
+        return -1
+
+    count = 0
+    while len(box) > 0:
+        for i in range(len(crane)):
+            for j in range(len(box)):
+                if crane[i] >= box[j]:
+                    box.pop(0)
+                    break
+
+        count += 1
+
+    return count
+
+print(move())
