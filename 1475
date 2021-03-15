@@ -1,0 +1,19 @@
+# 1475 방번호
+
+data = [0] * 9
+data_six = 0
+num = list(map(int, input()))
+
+for i in num:
+    if i == 9 or i == 6:
+        data_six += 1
+    else:
+        data[i] += 1
+
+if data_six%2 != 0:
+    data_six = data_six//2 + 1
+else:
+    data_six //= 2
+
+print(max(data_six, max(data)))
+
