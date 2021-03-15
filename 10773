@@ -1,0 +1,13 @@
+#10773 제로
+
+k = int(input())
+jamin = []
+for _ in range(k):
+    data = int(input())
+    if data == 0:
+        jamin.pop(-1)
+    else:
+        jamin.append(data)
+
+print(sum(jamin))
+
