@@ -1,0 +1,31 @@
+#2891 카약과 강풍
+n, r, s = list(map(int, input().split()))
+broken = sorted(list(map(int, input().split())))
+extra = sorted(list(map(int, input().split())))
+
+k = 0
+
+for _ in range(r):
+    if broken[k] in extra:
+        extra.remove(broken[k])
+        broken.remove(broken[k])
+
+    else:
+        k += 1
+
+r = len(broken)
+k = 0
+
+for _ in range(r):
+    if broken[k] - 1 in extra:
+        extra.remove(broken[k] - 1)
+        broken.remove(broken[k])
+
+    elif broken[k] + 1 in extra:
+        extra.remove(broken[k] + 1)
+        broken.remove(broken[k])
+
+    else:
+        k += 1
+
+print(len(broken))
