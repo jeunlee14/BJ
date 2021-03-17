@@ -1,0 +1,16 @@
+# 4796 캠핑
+cnt = 0
+while True:
+    res = 0
+    l, p, v = map(int, input().split())
+    cnt += 1
+    if l == p == v == 0:
+        break
+
+    res = (v // p) * l
+    t = v % p
+    if t >= l:
+        res += l
+    else:
+        res += t
+    print('Case '+str(cnt)+':',res)
