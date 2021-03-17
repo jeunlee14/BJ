@@ -1,0 +1,19 @@
+# 1051 숫자 정사각형
+n, m = map(int, input().split())
+data = [list(map(int, input())) for _ in range(n)]
+square = [1]
+
+
+def check():
+    for i in range(n):
+        for j in range(m):
+            k = data[i][j]
+            for q in range(j + 1, m):
+                if k == data[i][q]:
+                    if i + q - j < n and k == data[i + q - j][j]:
+                        if k == data[i + q - j][q]:
+                            square.append((q - j + 1) ** 2)
+
+
+check()
+print(max(square))
