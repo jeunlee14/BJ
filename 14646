@@ -1,0 +1,21 @@
+# 14646 욱제는 결정장애야!!
+
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+sticker = list(map(int, input().split()))
+cnt = [0] * (n+1)
+maxSt = 0
+max_list = []
+
+for i in sticker:
+    cnt[i] += 1
+    if cnt[i] == 2:
+        maxSt -= 1
+        cnt[i] = 0
+    else:
+        maxSt += 1
+    max_list.append(maxSt)
+
+print(max(max_list))
