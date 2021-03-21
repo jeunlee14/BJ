@@ -1,0 +1,49 @@
+#14888 연산자 끼워넣기
+
+import sys
+from itertools import permutations
+input = sys.stdin.readline
+
+op = []
+n = int(input())
+data = list(map(int, input().split()))
+temp = list(map(int, input().split()))
+
+# op에 연산자 개수만큼 숫자를 삽입
+# 1:+, 2:-, 3:*, 4:%
+for i in range(4):
+    for j in range(temp[i]):
+        op.append(i)
+
+# op로 순열 만들기
+opPer = []
+opPer = list(permutations(op, n - 1))
+opPer = list(set(opPer))  # 중복 제거
+
+res = []
+for k in opPer:
+    sum, x = data[0], 0
+    for l in range(1, n):
+        m = k[x]
+
+        if m == 0:
+            sum += data[l]
+
+        elif m == 1:
+            sum -= data[l]
+
+        elif m == 2:
+            sum *= data[l]
+
+        elif m == 3:
+            if sum >= 0:
+                sum //= data[l]
+            else:
+                sum = -sum
+                sum //= data[l]
+                sum = -sum
+        x += 1
+    res.append(sum)
+
+print(max(res))
+print(min(res))
