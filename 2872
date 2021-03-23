@@ -1,0 +1,21 @@
+#2872 우리집엔 도서관이 있어 
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+
+def arange():
+    book = [int(input()) for _ in range(n)]
+    max_index = book.index(max(book))
+    num = max(book)
+    cnt = n - max_index - 1
+
+    for i in range(max_index - 1, -1, -1):
+        if book[i] == num - 1:
+            num -= 1
+        else:
+            cnt += 1
+
+    print(cnt)
+arange()
+
