@@ -1,0 +1,34 @@
+# 15900 나무탈출
+import sys
+#recursionError 발생
+sys.setrecursionlimit(10000)
+
+input = sys.stdin.readline
+
+n = int(input())
+data = [[]*(n+1) for _ in range(n+1)]
+
+for _ in range(n-1):
+    a, b = list(map(int, input().split()))
+    data[a].append(b)
+    data[b].append(a)
+
+countHeight = 0
+
+def dfs(graph, v, height):
+    global countHeight
+    isLeaf = True
+    visited[v] = True
+    for i in graph[v]:
+        if not visited[i]:
+            isLeaf = False
+            dfs(graph, i, height + 1)
+    if isLeaf:
+        countHeight += height
+
+visited = [False] * 500001
+dfs(data, 1, 0)
+if countHeight % 2:
+    print("Yes")
+else:
+    print("No")
